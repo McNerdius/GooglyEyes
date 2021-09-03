@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <ProjectReference Include="..\shared\shared.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <!-- <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" /> -->
+        <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta13" />
+        <PackageReference Include="Spectre.Console.ImageSharp" Version="0.41.0" />
+        <PackageReference Include="Spectre.CLI" Version="0.49.0" />
+    </ItemGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+</Project>
