@@ -20,8 +20,9 @@ public static class GooglyMath
 
     private static Random fuzzGen = new();
 
+    // NextSingle() rarely returns zero
     public static float Fuzz( float max = 1 )
-        => fuzzGen!.NextSingle() * max * 2 - max;
+    => fuzzGen!.NextSingle() * max * (fuzzGen.Next( 3 ) - 1);
 
     public static float SumOfSquares( float a, float b ) => Pow( a, 2 ) + Pow( b, 2 );
     public static float Pythagorean( float a, float b ) => Sqrt( SumOfSquares( a, b ) );
