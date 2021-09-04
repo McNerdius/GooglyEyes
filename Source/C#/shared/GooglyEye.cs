@@ -11,7 +11,9 @@ public record GooglyEye( float Radius, float PupilRadius )
     public float PupilDiameter = PupilRadius * 2;
 
     public (float X, float Y) PupilPosition { get; set; } = (0, 0);
+
     public (float X, float Y) PupilVelocity { get; set; } = (0, 0);
+    public float TotalVelocity => SumOfSquares( PupilVelocity.X, PupilVelocity.Y );
 
     // 👍 https://github.com/adafruit/Adafruit_Learning_System_Guides/blob/main/Hallowing_Googly_Eye/Hallowing_Googly_Eye.ino 
     public void Move( float aX, float aY )
@@ -97,7 +99,7 @@ public record GooglyEye( float Radius, float PupilRadius )
         float vY = (PupilVelocity.Y + aY) * DRAG;
 
         float totalVelocity = SumOfSquares( vX, vY );
-        if ( totalVelocity > Pow( InnerRadius, 2 ) )
+        if ( totalVelocity > Pow( PupilRadius, 2 ) )
         {
             totalVelocity = PupilDiameter / Sqrt( totalVelocity );
             (vX, vY) = (vX * totalVelocity, vY * totalVelocity);
