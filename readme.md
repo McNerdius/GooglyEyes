@@ -7,9 +7,16 @@ There will be a few parts to this project:
 <details>
     <summary>CLI googlies</summary>
 
-ASCII Art googly eyes because why not.  A short and sweet way to visualize the animation and a sanity-check on the googly-math.  A C# version to start, with a likely Python version to follow.
+ASCII Art googly eyes because why not.  A quick and dirty way to visualize the animation and a sanity-check on the googly-math.  A C# version to start, with a likely Python version to follow.  I was hoping to pair Spectre's [Live Display](https://spectreconsole.net/live/live-display) with [Canvas Image](https://spectreconsole.net/widgets/canvas-image) but it appears they may not be compatible.  So for now it's a flickery console clear + full redraw per frame.  Next step is using Live Display with a vanilla Canvas, with proper bounding box / single pass pixel-level updates that the LCD version of the project will need.
 
-![simulated](googly_simulated.gif)
+Simulated constant random x-axis movement:
+
+<img src="googly_simulated.gif" alt="simulated" width="400" style="display: block; margin: auto;"/>
+
+And an initial random "push" then letting gravity do its thing:
+
+<img src="googly_gravity.gif" alt="gravity" width="400" style="display: block; margin: auto;"/>
+
 
 </details>
 
