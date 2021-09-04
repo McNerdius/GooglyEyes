@@ -5,7 +5,7 @@ namespace GooglyEyes;
 public static class GooglyMath
 {
     // keep this positive: will be subtracted
-    public static readonly float GRAVITY = 0.35f;
+    public static readonly float GRAVITY = 0.6f;
 
     // play with these, keep them >0 and <1
     public static readonly float ELASTICITY = 0.95f;
@@ -16,7 +16,7 @@ public static class GooglyMath
     // chip, and i hope to bring this code to .net nano
     // in the future, or i'd dump this scaling.
     // Faster chip or lower Thread.Sleep == lower scale
-    public static readonly float TIME_SCALE = 0.002f;
+    public static readonly float TIME_SCALE = 0.1f;
 
     private static Random fuzzGen = new();
 
