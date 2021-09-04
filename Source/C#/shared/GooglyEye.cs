@@ -3,7 +3,7 @@ using static System.MathF;
 namespace GooglyEyes;
 using static GooglyMath;
 
-public record GooglyEye( float Radius, float PupilRadius )
+public record GooglyEye( int Radius, int PupilRadius )
 {
     public float InnerRadius = Radius - PupilRadius;
     public float R2 = Pow( Radius - PupilRadius, 2 );
@@ -99,7 +99,7 @@ public record GooglyEye( float Radius, float PupilRadius )
         float vY = (PupilVelocity.Y + aY) * DRAG;
 
         float totalVelocity = SumOfSquares( vX, vY );
-        if ( totalVelocity > Pow( PupilRadius, 2 ) )
+        if ( totalVelocity > Pow( PupilDiameter, 2 ) )
         {
             totalVelocity = PupilDiameter / Sqrt( totalVelocity );
             (vX, vY) = (vX * totalVelocity, vY * totalVelocity);
