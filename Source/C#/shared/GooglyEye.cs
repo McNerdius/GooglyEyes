@@ -10,17 +10,14 @@ public record GooglyEye( float Radius, float PupilRadius )
 
     public float PupilDiameter = PupilRadius * 2;
 
-    public (float X, float Y) PupilPosition { get; private set; } = (0, 0);
-    public (float X, float Y) PupilVelocity { get; private set; } = (0, 0);
+    public (float X, float Y) PupilPosition { get; set; } = (0, 0);
+    public (float X, float Y) PupilVelocity { get; set; } = (0, 0);
 
     // 👍 https://github.com/adafruit/Adafruit_Learning_System_Guides/blob/main/Hallowing_Googly_Eye/Hallowing_Googly_Eye.ino 
-    public GooglyEye Move( (float, float) acceleration, float drag )
+    public void Move( float aX, float aY )
     {
-        var newEye = this with { PupilVelocity = capVelocity( acceleration, drag ) };
-
-        var (aX, aY) = acceleration;
         var (x, y) = this.PupilPosition;
-        var (vX_new, vY_new) = newEye.PupilVelocity;
+        var (vX_new, vY_new) = capVelocity( aX, aY );
         var (x_new, y_new) = (x + vX_new, y + vY_new);
 
         float originDistance = SumOfSquares( x_new, y_new );
@@ -88,18 +85,16 @@ public record GooglyEye( float Radius, float PupilRadius )
 
             // Velocity magnitude is scaled by the elasticity coefficient.
             mag1 *= ELASTICITY;
-            newEye.PupilVelocity = (rx * mag1, ry * mag1);
+            this.PupilVelocity = (rx * mag1, ry * mag1);
         }
 
-        newEye.PupilPosition = (x_new, y_new);
-
-        return newEye;
+        this.PupilPosition = (x_new, y_new);
     }
 
-    private (float X, float Y) capVelocity( (float x, float y) acceleration, float drag )
+    private (float X, float Y) capVelocity( float aX, float aY )
     {
-        float vX = (PupilVelocity.X + acceleration.x) * drag + Fuzz( 0.05f );
-        float vY = (PupilVelocity.Y + acceleration.y) * drag + Fuzz( 0.02f );
+        float vX = (PupilVelocity.X + aX) * DRAG;
+        float vY = (PupilVelocity.Y + aY) * DRAG;
 
         float totalVelocity = SumOfSquares( vX, vY );
         if ( totalVelocity > Pow( InnerRadius, 2 ) )
@@ -108,6 +103,6 @@ public record GooglyEye( float Radius, float PupilRadius )
             (vX, vY) = (vX * totalVelocity, vY * totalVelocity);
         }
 
-        return (vX, vY - GRAVITY);
+        return (vX, vY);
     }
 }
