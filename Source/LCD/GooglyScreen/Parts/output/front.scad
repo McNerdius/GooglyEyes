@@ -51,56 +51,64 @@ union() // SharpSCAD generated scene: front
       }
       translate( v= [ 33, -6, 18.75 ] )
       {
-        rotate( a= [ -90, 0, 0 ] )
-        {
-          union()
+        { // module: screw
+          rotate( a= [ -90, 0, 0 ] )
           {
-            cylinder( r= 2.6, $fn= 16, h= 5 );
-            translate( v= [ 0, 0, 2.4 ] )
+            union()
             {
-              cylinder( r= 1.6, $fn= 16, h= 20 );
+              cylinder( r= 2.6, $fn= 16, h= 5 );
+              translate( v= [ 0, 0, 2.4 ] )
+              {
+                cylinder( r= 1.6, $fn= 16, h= 20 );
+              }
             }
           }
         }
       }
       translate( v= [ -33, -6, 18.75 ] )
       {
-        rotate( a= [ -90, 0, 0 ] )
-        {
-          union()
+        { // module: screw
+          rotate( a= [ -90, 0, 0 ] )
           {
-            cylinder( r= 2.6, $fn= 16, h= 5 );
-            translate( v= [ 0, 0, 2.4 ] )
+            union()
             {
-              cylinder( r= 1.6, $fn= 16, h= 20 );
+              cylinder( r= 2.6, $fn= 16, h= 5 );
+              translate( v= [ 0, 0, 2.4 ] )
+              {
+                cylinder( r= 1.6, $fn= 16, h= 20 );
+              }
             }
           }
         }
       }
       translate( v= [ 33, -6, -18.75 ] )
       {
-        rotate( a= [ -90, 0, 0 ] )
-        {
-          union()
+        { // module: screw
+          rotate( a= [ -90, 0, 0 ] )
           {
-            cylinder( r= 2.6, $fn= 16, h= 5 );
-            translate( v= [ 0, 0, 2.4 ] )
+            union()
             {
-              cylinder( r= 1.6, $fn= 16, h= 20 );
+              cylinder( r= 2.6, $fn= 16, h= 5 );
+              translate( v= [ 0, 0, 2.4 ] )
+              {
+                cylinder( r= 1.6, $fn= 16, h= 20 );
+              }
             }
           }
         }
       }
       translate( v= [ -33, -6, -18.75 ] )
       {
-        rotate( a= [ -90, 0, 0 ] )
-        {
-          union()
+        { // module: screw
+          rotate( a= [ -90, 0, 0 ] )
           {
-            cylinder( r= 2.6, $fn= 16, h= 5 );
-            translate( v= [ 0, 0, 2.4 ] )
+            union()
             {
-              cylinder( r= 1.6, $fn= 16, h= 20 );
+              cylinder( r= 2.6, $fn= 16, h= 5 );
+              translate( v= [ 0, 0, 2.4 ] )
+              {
+                cylinder( r= 1.6, $fn= 16, h= 20 );
+              }
             }
           }
         }

@@ -4,4 +4,4 @@ using GooglyEyes.Screen.Parts;
 new Scene( "front" )
 {
     new Front()
-}.Save( "output" /* , saveSTL: true */ );
+}.Save( "output", savePNG: true /* , saveSTL: true */ );
