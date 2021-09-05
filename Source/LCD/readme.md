@@ -20,7 +20,7 @@ Another MicroPython project, periodically polling the cloud data.  I'm picturing
 
 * [D1 Mini](https://www.wemos.cc/en/latest/d1/d1_mini.html)
 * [Matrix LED Shield](https://www.wemos.cc/en/latest/d1_mini_shield/matrix_led.html) and [this driver](https://github.com/mcauser/micropython-tm1640)
-* 9v (PP3) battery with regulation circuitry sandwiched underneath LED shield on a [proto shield](https://www.wemos.cc/en/latest/d1_mini_shield/protoboard.html).  Not a fancy battery, but cheap and i always have them around for the smoke detectors.  They're about the same footprint as a D1 Mini too.
+* [Drone Battery](GridIndicator/Parts/Reference/syma_x9_battery.jpg) and [battery shield](https://www.wemos.cc/en/latest/d1_mini_shield/battery.html).
 * ...
 </details>
 
