@@ -5,16 +5,16 @@
       "name": "Launch and Debug Standalone Blazor WebAssembly App",
       "type": "blazorwasm",
       "request": "launch",
-      "cwd": "${workspaceFolder}/Source/C#/wasm"
+      "cwd": "${workspaceFolder}/Source/Desktop/C#/wasm"
     },
     {
       "name": ".NET Core Launch (console)",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/Source/C#/console/bin/Debug/net6.0/console.dll",
+      "program": "${workspaceFolder}/Source/Desktop/C#/console/bin/Debug/net6.0/console.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/Source/C#/console",
+      "cwd": "${workspaceFolder}/Source/Desktop/C#/console",
       "console": "externalTerminal",
       "stopAtEntry": false
     },

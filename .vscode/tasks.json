@@ -7,7 +7,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/Source/C#/GooglyEyes.sln",
+        "${workspaceFolder}/Source/Desktop/C#/GooglyEyes.sln",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
