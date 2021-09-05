@@ -18,14 +18,14 @@ imgStream.Seek( 0, SeekOrigin.Begin );
 var canvasImage = new CanvasImage( imgStream ).MaxWidth( 32 );
 
 var firstReading = true;
-bool continuousMotion = true;
+var continuousMotion = true;
 
 var t = DateTime.Now;
 
 while ( true )
 {
     canvasImage.Draw( left, clear: true );
-    canvasImage.Draw( right, x: 128 );
+    canvasImage.Draw( right, x_offset: 128 );
 
     AnsiConsole.Clear();
     AnsiConsole.Render( canvasImage );
