@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using SharpSCAD;
+using GooglyEyes.Screen.Parts;
+
+new Scene( "front" )
+{
+    new Front()
+}.Save( "output" /* , saveSTL: true */ );
