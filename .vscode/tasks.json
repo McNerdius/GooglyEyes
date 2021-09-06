@@ -24,7 +24,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/Source\\LCD\\GooglyFunctions"
+        "cwd": "${workspaceFolder}/Source/LCD/GooglyFunctions"
       }
     },
     {
@@ -43,7 +43,7 @@
       },
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/Source\\LCD\\GooglyFunctions"
+        "cwd": "${workspaceFolder}/Source/LCD/GooglyFunctions"
       }
     },
     {
@@ -59,7 +59,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/Source\\LCD\\GooglyFunctions"
+        "cwd": "${workspaceFolder}/Source/LCD/GooglyFunctions"
       }
     },
     {
@@ -76,14 +76,14 @@
       "dependsOn": "clean release (functions)",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/Source\\LCD\\GooglyFunctions"
+        "cwd": "${workspaceFolder}/Source/LCD/GooglyFunctions"
       }
     },
     {
       "type": "func",
       "dependsOn": "build (functions)",
       "options": {
-        "cwd": "${workspaceFolder}/Source\\LCD\\GooglyFunctions/bin/Debug/net5.0"
+        "cwd": "${workspaceFolder}/Source/LCD/GooglyFunctions/bin/Debug/netcoreapp3.1"
       },
       "command": "host start",
       "isBackground": true,

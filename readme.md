@@ -29,7 +29,7 @@ Using `Excubo.Blazor.Canvas` to start.  The console project aids in learning/exp
 <details>
     <summary>LCD googlies for 3D printer</summary>
 
-This is the heart of the project.  Coupling either a [D1 Mini](https://www.wemos.cc/en/latest/d1/d1_mini.html) or [S2 Mini](https://www.wemos.cc/en/latest/s2/s2_mini.html) with a [2.4" LCD](https://www.wemos.cc/en/latest/d1_mini_shield/tft_2_4.html) and an accelerometer to feed x-axis movement data to the software googlies.  
+This is the "real" project.  Coupling either a [D1 Mini](https://www.wemos.cc/en/latest/d1/d1_mini.html) or [S2 Mini](https://www.wemos.cc/en/latest/s2/s2_mini.html) with a [2.4" LCD](https://www.wemos.cc/en/latest/d1_mini_shield/tft_2_4.html) and an accelerometer to feed x-axis movement data to the software googlies.  
 
 And since it's keeping an eye on movement, it'll know when the print is done and do IoT things to let me know.  (Not an Octoprint user yet, maybe when i get a 2nd printer. :) 
     
