@@ -36,7 +36,7 @@ public static class Functions
 
         readings = readings.Take( 100 ).Prepend( reading );
 
-        await JsonSerializer.SerializeAsync( blobOutput, readings, new JsonSerializerOptions { IgnoreNullValues = true } );
+        await JsonSerializer.SerializeAsync( blobOutput, readings );
 
         return new OkResult();
     }
@@ -56,7 +56,7 @@ public static class Functions
 
             return new ContentResult
             {
-                Content = JsonSerializer.Serialize( reading, new JsonSerializerOptions { IgnoreNullValues = true } ),
+                Content = JsonSerializer.Serialize( reading ),
                 ContentType = "application/json"
             };
         }
