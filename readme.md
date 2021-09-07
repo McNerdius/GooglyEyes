@@ -7,7 +7,7 @@ There will be a few parts to this project:
 <details>
     <summary>Console googlies</summary>
 
- Because why not.  A quick and dirty way to visualize the animation and a sanity-check on the googly-math.  I was hoping to pair Spectre's [Live Display](https://spectreconsole.net/live/live-display) with [Canvas Image](https://spectreconsole.net/widgets/canvas-image) but it appears they may not be compatible.  So for now it's a flickery console clear + full redraw per frame.  No pixel-level work here, just using ImageSharp's `EllipsePolygon` to draw on Spectre's `CanvasImage` which has a `MaxWidth` set to squish pixels into ["coxels"](https://twitter.com/SimonCropp/status/1331554791726534657?s=20).
+ Because why not.  A quick and dirty way to visualize the animation and a sanity-check on the googly-math.  I was hoping to pair Spectre's [Live Display](https://spectreconsole.net/live/live-display) with [Canvas Image](https://spectreconsole.net/widgets/canvas-image) but it appears they may not be compatible.  So for now it's a flickery console clear + full redraw.  No pixel-level work here, just using ImageSharp's `EllipsePolygon` to draw on Spectre's `CanvasImage` which has a `MaxWidth` set to squish pixels into ["coxels"](https://twitter.com/SimonCropp/status/1331554791726534657?s=20).
 
 Simulated constant random x-axis accelerometer input:
 
@@ -44,10 +44,12 @@ Ponderings:
 
 ---
 
-Credit to [adafruit](https://learn.adafruit.com/hallowing-googly-eye) for the googly-bouncing math/algorithm.  I'm still sorting out a few things in particular:
+Credit to [adafruit](https://learn.adafruit.com/hallowing-googly-eye) for the googly-bouncing math/algorithm.
 
-* Gravity.  Adafruit's [animation](https://learn.adafruit.com/assets/65226) shows the googly settling toward the bottom as one would expect, and the [project's page](https://learn.adafruit.com/hallowing-googly-eye/software) mentions gravity - but the [value mentioned](https://github.com/adafruit/Adafruit_Learning_System_Guides/blob/main/Hallowing_Googly_Eye/Hallowing_Googly_Eye.ino#L146) just scales acceleration.  Nothing about the code as far as i can tell pulls the pupil down from the center - given a virtual "tap" and no more input, the googlies will settle at the *center*, not the bottom.  My current naive approach of adding a constant value to the y direction means that it will never truly "settle" but keep making tiny bounces at the bottom.
-* Constant Motion vs "tap-and-settle".  Adapting the Adafruit code's Scale/Elasticity/Drag approach has been fiddly.  After choosing values that "look good" given continuous simulated accelerometer input - decent speed, bounciness, gravity/settling - switching off continuous input the animation is slow with a low-gravity effect.
-* After a while with continuous input, acceleration sometimes trends toward bonkers.  It's hard to find a balance between always-too-slow and sometimes-goes-bonkers.
+I've implemented a simulated LIS3DH to make sure the acceleration numbers are in check with those that the Adafruit code would be dealing with, apart from the elaspsed times (48mhz vs 3.6ghz and all), and actual g-forces their device experiences when shaken.  
 
-Hopefully less playing with constants and more learning the math will help me get this stuff sorted.
+Two annoyances remain:
+
+Given constantly changing directons, as will be the case when 3D printing, the pupil "jitters" a lot.  Sampling less frequently solves this, but leads to flickering.  I've changed it to only poll for new values every *n* frames.
+
+Fine tuning G_SCALE in particular is fiddly.  When gravity otherwise "looks good", when the pupil settles it will continually "bounce" due to the gravitational constant.  Tweaking Elasticity helps some.
