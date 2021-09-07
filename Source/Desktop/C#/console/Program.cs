@@ -8,8 +8,13 @@ using SixLabors.ImageSharp.Drawing.Processing;
 using GooglyEyes;
 using static GooglyEyes.GooglyMath;
 
+var lis3dh = new LIS3DH( LIS3DH.FullScale.Range8G, maxGforce: 3f );
+
 var left = new GooglyEye( 64, 32 );
 var right = new GooglyEye( 64, 32 );
+
+left.PupilVelocity = (lis3dh.Random(), lis3dh.Random());
+right.PupilVelocity = (lis3dh.Random(), lis3dh.Random());
 
 var img = new Image<Rgba32>( 256, 128 );
 var imgStream = new MemoryStream();
@@ -22,6 +27,8 @@ var continuousMotion = true;
 
 var t = DateTime.Now;
 
+(int skip, int current) frames = (10, 0);
+
 while ( true )
 {
     canvasImage.Draw( left, clear: true );
@@ -31,29 +38,32 @@ while ( true )
     AnsiConsole.Render( canvasImage );
 
     var elapsed = (float) (DateTime.Now - t).TotalSeconds;
-    var scale = elapsed * TIME_SCALE;
+    t = DateTime.Now;
+    var scale = elapsed * G_SCALE;
 
-    if ( firstReading )
+    if ( frames.skip == ++frames.current )
     {
-        left.PupilVelocity = ReadAccelerometer();
-        right.PupilVelocity = ReadAccelerometer();
+        frames.current = 0;
+        left.Move( 0, lis3dh.Gravity * scale );
+        right.Move( 0, lis3dh.Gravity * scale );
+    }
+    else
+    {
+        var (aX, aY) = ReadAccelerometer();
+        left.Move( aX * scale, aY * scale );
+
+        (aX, aY) = ReadAccelerometer();
+        right.Move( aX * scale, aY * scale );
     }
 
-    var (aX, aY) = ReadAccelerometer();
-    (aX, aY) = (aX * scale, (aY - GRAVITY) * scale);
-
     firstReading = false;
-
-    left.Move( aX, aY );
-    right.Move( aX, aY );
-
     Thread.Sleep( 10 );
 }
 
 (float aX, float aY) ReadAccelerometer()
 => (firstReading, continuousMotion) switch
 {
-    (true, _ ) => (Fuzz( 2 ), Fuzz( 2 )),
-    (false, true ) => (Fuzz( 0.75f ), 0f),
-    (false, false ) => (0f, 0f)
+    (true, _ ) => (lis3dh.Random(), lis3dh.Random()),
+    (false, true ) => (lis3dh.Random(), lis3dh.Gravity),
+    (false, false ) => (0, lis3dh.Gravity)
 };
