@@ -1,7 +1,8 @@
 Models/*
-Reference/*
+**/Reference/*
 Source/Desktop/C#/wasm/*
 **/secrets.py
+**/webrepl_cfg.py
 **/local.settings.json
 __blobstorage__/*
 

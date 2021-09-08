@@ -1,38 +1,38 @@
 Hardware used:
-* SSD1306 - testing only
-* LIS3DH  - Accelerometer
-* Si7021  - RH/Temp
-* ILI9341 - 2.4" TFT
-* XPT2046 - Touch controller
+* SSD1306 - testing only        ~15ma ?                     => 220 ohm
+* LIS3DH  - Accelerometer       185uA + 3ma i2c             => 660 ohm     
+* Si7021  - RH/Temp             180uA + 3ma i2c             => 660 ohm
+* ILI9341 - 2.4" TFT            ↓↓↓ 
+* XPT2046 - Touch controller    ~70ma between the two ?     => 47 ohm
 
--[ ] toggle wifi on/of per-push
--[ ] 240mhz for googly animation, 160mhz for idle
+- [x] toggle wifi on/of per-push
+- [ ] 240mhz for googly animation, 160mhz for idle
 
--[ ] set MotionlessReadings to -1 and push to GooglyFunctions along with RH
+- [x] set Idle to -1 and push to GooglyFunctions along with RH
 
--[ ] generate FrameBuffers for Eye and Pupil.  Does using framebuf.MONO_ save memory ?
+- [x] generate FrameBuffers for Eye and Pupil.
 
--[ ] draw centered eyes
--[ ]   later: random motion
+- [ ] draw centered eyes
+- [ ]   later: random motion
 
 * start:
 
--[ ] wait for double-tap, pushing MotionlessReadings and RH every 30min
+- [x] wait for double-tap, pushing Idle and RH every 30min
 
--[ ] double-tap: Set MotionlessReadings to 0 and push along with RH
+- [x] double-tap: ~~Set Idle to 0 and~~ push along with RH
 
 * googly-loop:
--[ ]  read LIS3DH
--[ ]  do left eye math
--[ ]  read LIS3DH again ?
--[ ]  do right eye math
--[ ]  update screen via bounding rectangles
--[ ]  keep track of MotionlessReadings.  after 10s or so worth, exit googly loop
+- [x]  read LIS3DH
+- [ ]  do left eye math
+- [ ]  read LIS3DH again ?
+- [ ]  do right eye math
+- [ ]  update screen via bounding rectangles
+- [x]  keep track of Idle.  after 10s or so worth, exit googly loop
 
 * post-googly-loop:
 
--[ ] draw centered eyes
--[ ]   later: random motion
--[ ] wait for double-tap to confirm print completion, pushing MotionlessReadings and RH every 30min
--[ ] double-tap: Set MotionlessReadings to -1 and push along with RH
--[ ] goto start
+- [ ] draw centered eyes
+- [ ]   later: random motion
+- [x] wait for double-tap to confirm print completion, pushing Idle and RH every 30min
+- [x] double-tap: Set Idle to -1 and push along with RH
+- [x] goto start
