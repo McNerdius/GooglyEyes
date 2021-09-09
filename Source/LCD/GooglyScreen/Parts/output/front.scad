@@ -188,49 +188,61 @@ union() // SharpSCAD generated scene: front
               }
             }
           }
-          translate( v= [ -33, 0, 18.75 ] )
+          mirror( v= [ 1, 0, 0 ] )
           {
-            { // module: screw
-              translate( v= [ 0, -3.5, 0 ] )
-              {
-                rotate( a= [ -90, 0, 0 ] )
+            translate( v= [ 33, 0, 18.75 ] )
+            {
+              { // module: screw
+                translate( v= [ 0, -3.5, 0 ] )
                 {
-                  union()
+                  rotate( a= [ -90, 0, 0 ] )
                   {
-                    cylinder( r= 2.6, $fn= 32, h= 3.5 );
-                    cylinder( r= 1.6, $fn= 32, h= 40 );
+                    union()
+                    {
+                      cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                      cylinder( r= 1.6, $fn= 32, h= 40 );
+                    }
                   }
                 }
               }
             }
           }
-          translate( v= [ 33, 0, -18.75 ] )
+          mirror( v= [ 0, 0, 1 ] )
           {
-            { // module: screw
-              translate( v= [ 0, -3.5, 0 ] )
-              {
-                rotate( a= [ -90, 0, 0 ] )
+            translate( v= [ 33, 0, 18.75 ] )
+            {
+              { // module: screw
+                translate( v= [ 0, -3.5, 0 ] )
                 {
-                  union()
+                  rotate( a= [ -90, 0, 0 ] )
                   {
-                    cylinder( r= 2.6, $fn= 32, h= 3.5 );
-                    cylinder( r= 1.6, $fn= 32, h= 40 );
+                    union()
+                    {
+                      cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                      cylinder( r= 1.6, $fn= 32, h= 40 );
+                    }
                   }
                 }
               }
             }
           }
-          translate( v= [ -33, 0, -18.75 ] )
+          mirror( v= [ 0, 0, 1 ] )
           {
-            { // module: screw
-              translate( v= [ 0, -3.5, 0 ] )
+            mirror( v= [ 1, 0, 0 ] )
+            {
+              translate( v= [ 33, 0, 18.75 ] )
               {
-                rotate( a= [ -90, 0, 0 ] )
-                {
-                  union()
+                { // module: screw
+                  translate( v= [ 0, -3.5, 0 ] )
                   {
-                    cylinder( r= 2.6, $fn= 32, h= 3.5 );
-                    cylinder( r= 1.6, $fn= 32, h= 40 );
+                    rotate( a= [ -90, 0, 0 ] )
+                    {
+                      union()
+                      {
+                        cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                        cylinder( r= 1.6, $fn= 32, h= 40 );
+                      }
+                    }
                   }
                 }
               }

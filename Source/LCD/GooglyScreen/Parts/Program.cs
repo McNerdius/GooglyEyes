@@ -11,3 +11,7 @@ new Scene( "module" )
     new TftModule()
 }.Save( "output", savePNG: true /* , saveSTL: true */ );
 
+new Scene( "rear" )
+{
+    new Rear()
+}.Save( "output", savePNG: true /* , saveSTL: true */ );
