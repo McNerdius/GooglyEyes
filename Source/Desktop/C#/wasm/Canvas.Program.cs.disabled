@@ -1,0 +1,66 @@
+﻿using Spectre.Console;
+
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Drawing.Processing;
+
+using GooglyEyes;
+using static GooglyEyes.GooglyMath;
+
+var left = new GooglyEye( 10, 2 );
+var right = new GooglyEye( 10, 2 );
+
+
+var firstFrame = true;
+var continuousMotion = true;
+
+var t = DateTime.Now;
+
+var canvas = new Canvas( left.Diameter, left.Diameter );
+canvas.DrawCircle( left.Radius, 0, 0 );
+// canvas.DrawCircle( right.Radius, right.Diameter, 0 );
+
+AnsiConsole.Render( canvas );
+// AnsiConsole.Live( canvas ).Start( _ =>
+// {
+while ( true )
+{
+    var elapsed = (float) (DateTime.Now - t).TotalSeconds;
+    var scale = 1;//elapsed * TIME_SCALE;
+
+    if ( firstFrame )
+    {
+        left.PupilVelocity = ReadAccelerometer();
+        right.PupilVelocity = ReadAccelerometer();
+    }
+
+    var (aX, aY) = ReadAccelerometer();
+    (aX, aY) = (aX * scale, (aY - GRAVITY) * scale);
+
+    firstFrame = false;
+
+    var (old_x, old_y) = left.PupilPosition;
+    left.Move( aX, aY );
+    canvas.Draw( left, old_x, old_y );
+
+    // (old_x, old_y) = right.PupilPosition;
+    // right.Move( aX, aY );
+    // canvas.Draw( right, old_x, old_y, right.Diameter );
+
+    AnsiConsole.Clear();
+    AnsiConsole.Render( canvas );
+
+    Thread.Sleep( 10 );
+}
+// } );
+
+
+(float aX, float aY) ReadAccelerometer()
+=> (firstFrame, continuousMotion) switch
+{
+    // (true, _ ) => (Fuzz( 2 ), Fuzz( 2 )),
+    (true, _ ) => (2, 2),
+    (false, true ) => (Fuzz( 0.75f ), 0f),
+    (false, false ) => (0f, 0f)
+};

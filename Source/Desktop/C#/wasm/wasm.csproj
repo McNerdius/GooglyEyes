@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>GooglyEyes</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Excubo.Blazor.Canvas" Version="2.6.18" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rc.1.21410.12" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rc.1.21410.12" PrivateAssets="all" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\shared\shared.csproj" />
+    </ItemGroup>
+</Project>
