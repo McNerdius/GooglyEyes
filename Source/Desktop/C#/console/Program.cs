@@ -10,11 +10,15 @@ using static GooglyEyes.GooglyMath;
 
 var lis3dh = new LIS3DH( LIS3DH.FullScale.Range8G, maxGforce: 3f );
 
-var left = new GooglyEye( 64, 32 );
-var right = new GooglyEye( 64, 32 );
+var left = new GooglyEye( 64, 32 )
+{
+    PupilVelocity = (lis3dh.RandomReading(), lis3dh.RandomReading())
+};
 
-left.PupilVelocity = (lis3dh.Random(), lis3dh.Random());
-right.PupilVelocity = (lis3dh.Random(), lis3dh.Random());
+var right = new GooglyEye( 64, 32 )
+{
+    PupilVelocity = (lis3dh.RandomReading(), lis3dh.RandomReading())
+};
 
 var img = new Image<Rgba32>( 256, 128 );
 var imgStream = new MemoryStream();
@@ -31,15 +35,15 @@ var t = DateTime.Now;
 
 while ( true )
 {
-    canvasImage.Draw( left, clear: true );
-    canvasImage.Draw( right, x_offset: 128 );
+    canvasImage.DrawEye( left, clear: true );
+    canvasImage.DrawEye( right, x_offset: 128 );
 
     AnsiConsole.Clear();
     AnsiConsole.Render( canvasImage );
 
     var elapsed = (float) (DateTime.Now - t).TotalSeconds;
     t = DateTime.Now;
-    var scale = elapsed * G_SCALE;
+    var scale = elapsed * G_Scale;
 
     if ( frames.skip == ++frames.current )
     {
@@ -63,7 +67,7 @@ while ( true )
 (float aX, float aY) ReadAccelerometer()
 => (firstReading, continuousMotion) switch
 {
-    (true, _ ) => (lis3dh.Random(), lis3dh.Random()),
-    (false, true ) => (lis3dh.Random(), lis3dh.Gravity),
+    (true, _ ) => (lis3dh.RandomReading(), lis3dh.RandomReading()),
+    (false, true ) => (lis3dh.RandomReading(), lis3dh.Gravity),
     (false, false ) => (0, lis3dh.Gravity)
 };

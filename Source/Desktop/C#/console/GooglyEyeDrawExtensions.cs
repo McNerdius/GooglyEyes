@@ -10,7 +10,7 @@ namespace GooglyEyes;
 
 public static class GooglyEyeDrawExtensions
 {
-    public static void Draw( this CanvasImage image, GooglyEye eye, int x_offset = 0, bool clear = false )
+    public static void DrawEye( this CanvasImage image, GooglyEye eye, int x_offset = 0, bool clear = false )
     => image.Mutate( i =>
     {
         if ( clear )
