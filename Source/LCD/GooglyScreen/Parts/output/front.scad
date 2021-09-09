@@ -3,208 +3,235 @@ union() // SharpSCAD generated scene: front
   { // module: front
     difference()
     {
-      { // module: roundedcube
-        translate( v= [ -38, -5, -24 ] )
+      translate( v= [ 0, 2.1, 0 ] )
+      {
+        { // module: roundedcube
+          translate( v= [ -38, -6, -24 ] )
+          {
+            translate( v= [ 0, 0, 0 ] )
+            {
+              hull()
+              {
+                translate( v= [ 1, 1, 1 ] )
+                {
+                  sphere( r= 1, $fn= 32 );
+                }
+                translate( v= [ 1, 11, 1 ] )
+                {
+                  sphere( r= 1, $fn= 32 );
+                }
+                translate( v= [ 1, 1, 47 ] )
+                {
+                  sphere( r= 1, $fn= 32 );
+                }
+                translate( v= [ 1, 11, 47 ] )
+                {
+                  sphere( r= 1, $fn= 32 );
+                }
+                translate( v= [ 75, 1, 1 ] )
+                {
+                  sphere( r= 1, $fn= 32 );
+                }
+                translate( v= [ 75, 11, 1 ] )
+                {
+                  sphere( r= 1, $fn= 32 );
+                }
+                translate( v= [ 75, 1, 47 ] )
+                {
+                  sphere( r= 1, $fn= 32 );
+                }
+                translate( v= [ 75, 11, 47 ] )
+                {
+                  sphere( r= 1, $fn= 32 );
+                }
+                union()
+                {
+                  translate( v= [ 0, 11, 0 ] )
+                  {
+                    cube( size= [ 76, 1, 48 ] );
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      { // module: tftmodule
+        union()
         {
-          translate( v= [ 0, 0, 0 ] )
+          translate( v= [ 0, -2, 0 ] )
           {
-            hull()
-            {
-              translate( v= [ 1, 1, 1 ] )
+            { // module: roundedcube
+              translate( v= [ -30, -2, -22 ] )
               {
-                sphere( r= 1, $fn= 32 );
-              }
-              translate( v= [ 1, 9, 1 ] )
-              {
-                sphere( r= 1, $fn= 32 );
-              }
-              translate( v= [ 1, 1, 47 ] )
-              {
-                sphere( r= 1, $fn= 32 );
-              }
-              translate( v= [ 1, 9, 47 ] )
-              {
-                sphere( r= 1, $fn= 32 );
-              }
-              translate( v= [ 75, 1, 1 ] )
-              {
-                sphere( r= 1, $fn= 32 );
-              }
-              translate( v= [ 75, 9, 1 ] )
-              {
-                sphere( r= 1, $fn= 32 );
-              }
-              translate( v= [ 75, 1, 47 ] )
-              {
-                sphere( r= 1, $fn= 32 );
-              }
-              translate( v= [ 75, 9, 47 ] )
-              {
-                sphere( r= 1, $fn= 32 );
-              }
-              union()
-              {
+                translate( v= [ 0, 0, 0 ] )
+                {
+                  hull()
+                  {
+                    translate( v= [ 1, 1, 1 ] )
+                    {
+                      sphere( r= 1, $fn= 32 );
+                    }
+                    translate( v= [ 1, 3, 1 ] )
+                    {
+                      sphere( r= 1, $fn= 32 );
+                    }
+                    translate( v= [ 1, 1, 43 ] )
+                    {
+                      sphere( r= 1, $fn= 32 );
+                    }
+                    translate( v= [ 1, 3, 43 ] )
+                    {
+                      sphere( r= 1, $fn= 32 );
+                    }
+                    translate( v= [ 59, 1, 1 ] )
+                    {
+                      sphere( r= 1, $fn= 32 );
+                    }
+                    translate( v= [ 59, 3, 1 ] )
+                    {
+                      sphere( r= 1, $fn= 32 );
+                    }
+                    translate( v= [ 59, 1, 43 ] )
+                    {
+                      sphere( r= 1, $fn= 32 );
+                    }
+                    translate( v= [ 59, 3, 43 ] )
+                    {
+                      sphere( r= 1, $fn= 32 );
+                    }
+                    union()
+                    {
+                      translate( v= [ 0, 3, 0 ] )
+                      {
+                        cube( size= [ 60, 1, 44 ] );
+                      }
+                    }
+                  }
+                }
               }
             }
           }
-        }
-      }
-      translate( v= [ 33, -6, 18.75 ] )
-      {
-        { // module: screw
-          rotate( a= [ -90, 0, 0 ] )
+          translate( v= [ 0, 0.65, 0 ] )
           {
-            union()
-            {
-              cylinder( r= 2.6, $fn= 16, h= 5 );
-              translate( v= [ 0, 0, 2.4 ] )
-              {
-                cylinder( r= 1.6, $fn= 16, h= 20 );
-              }
-            }
+            cube( size= [ 72, 1.5, 44 ], center= true );
           }
-        }
-      }
-      translate( v= [ -33, -6, 18.75 ] )
-      {
-        { // module: screw
-          rotate( a= [ -90, 0, 0 ] )
+          translate( v= [ 0, 6.9, 0 ] )
           {
-            union()
-            {
-              cylinder( r= 2.6, $fn= 16, h= 5 );
-              translate( v= [ 0, 0, 2.4 ] )
+            { // module: roundedcube
+              translate( v= [ -36, -7, -22 ] )
               {
-                cylinder( r= 1.6, $fn= 16, h= 20 );
-              }
-            }
-          }
-        }
-      }
-      translate( v= [ 33, -6, -18.75 ] )
-      {
-        { // module: screw
-          rotate( a= [ -90, 0, 0 ] )
-          {
-            union()
-            {
-              cylinder( r= 2.6, $fn= 16, h= 5 );
-              translate( v= [ 0, 0, 2.4 ] )
-              {
-                cylinder( r= 1.6, $fn= 16, h= 20 );
-              }
-            }
-          }
-        }
-      }
-      translate( v= [ -33, -6, -18.75 ] )
-      {
-        { // module: screw
-          rotate( a= [ -90, 0, 0 ] )
-          {
-            union()
-            {
-              cylinder( r= 2.6, $fn= 16, h= 5 );
-              translate( v= [ 0, 0, 2.4 ] )
-              {
-                cylinder( r= 1.6, $fn= 16, h= 20 );
-              }
-            }
-          }
-        }
-      }
-      translate( v= [ 0, -4, 0 ] )
-      {
-        { // module: roundedcube
-          translate( v= [ -31, -1.5, -22 ] )
-          {
-            translate( v= [ 0, 0, 0 ] )
-            {
-              hull()
-              {
-                translate( v= [ 1, 1, 1 ] )
+                translate( v= [ 0, 0, 0 ] )
                 {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 1, 2, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 1, 1, 43 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 1, 2, 43 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 61, 1, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 61, 2, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 61, 1, 43 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 61, 2, 43 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                union()
-                {
+                  hull()
+                  {
+                    translate( v= [ 2, 2, 2 ] )
+                    {
+                      sphere( r= 2, $fn= 32 );
+                    }
+                    translate( v= [ 2, 12, 2 ] )
+                    {
+                      sphere( r= 2, $fn= 32 );
+                    }
+                    translate( v= [ 2, 2, 42 ] )
+                    {
+                      sphere( r= 2, $fn= 32 );
+                    }
+                    translate( v= [ 2, 12, 42 ] )
+                    {
+                      sphere( r= 2, $fn= 32 );
+                    }
+                    translate( v= [ 70, 2, 2 ] )
+                    {
+                      sphere( r= 2, $fn= 32 );
+                    }
+                    translate( v= [ 70, 12, 2 ] )
+                    {
+                      sphere( r= 2, $fn= 32 );
+                    }
+                    translate( v= [ 70, 2, 42 ] )
+                    {
+                      sphere( r= 2, $fn= 32 );
+                    }
+                    translate( v= [ 70, 12, 42 ] )
+                    {
+                      sphere( r= 2, $fn= 32 );
+                    }
+                    union()
+                    {
+                      cube( size= [ 72, 2, 44 ] );
+                    }
+                  }
                 }
               }
             }
           }
         }
       }
-      translate( v= [ 0, 2.25, 0 ] )
+      translate( v= [ 0, -1, 0 ] )
       {
-        { // module: roundedcube
-          translate( v= [ -36, -5, -22 ] )
+        union()
+        {
+          translate( v= [ 33, 0, 18.75 ] )
           {
-            translate( v= [ 0, 0, 0 ] )
-            {
-              hull()
+            { // module: screw
+              translate( v= [ 0, -3.5, 0 ] )
               {
-                translate( v= [ 1, 1, 1 ] )
+                rotate( a= [ -90, 0, 0 ] )
                 {
-                  sphere( r= 1, $fn= 32 );
+                  union()
+                  {
+                    cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                    cylinder( r= 1.6, $fn= 32, h= 40 );
+                  }
                 }
-                translate( v= [ 1, 9, 1 ] )
+              }
+            }
+          }
+          translate( v= [ -33, 0, 18.75 ] )
+          {
+            { // module: screw
+              translate( v= [ 0, -3.5, 0 ] )
+              {
+                rotate( a= [ -90, 0, 0 ] )
                 {
-                  sphere( r= 1, $fn= 32 );
+                  union()
+                  {
+                    cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                    cylinder( r= 1.6, $fn= 32, h= 40 );
+                  }
                 }
-                translate( v= [ 1, 1, 43 ] )
+              }
+            }
+          }
+          translate( v= [ 33, 0, -18.75 ] )
+          {
+            { // module: screw
+              translate( v= [ 0, -3.5, 0 ] )
+              {
+                rotate( a= [ -90, 0, 0 ] )
                 {
-                  sphere( r= 1, $fn= 32 );
+                  union()
+                  {
+                    cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                    cylinder( r= 1.6, $fn= 32, h= 40 );
+                  }
                 }
-                translate( v= [ 1, 9, 43 ] )
+              }
+            }
+          }
+          translate( v= [ -33, 0, -18.75 ] )
+          {
+            { // module: screw
+              translate( v= [ 0, -3.5, 0 ] )
+              {
+                rotate( a= [ -90, 0, 0 ] )
                 {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 71, 1, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 71, 9, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 71, 1, 43 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 71, 9, 43 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                union()
-                {
+                  union()
+                  {
+                    cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                    cylinder( r= 1.6, $fn= 32, h= 40 );
+                  }
                 }
               }
             }

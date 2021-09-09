@@ -8,7 +8,7 @@ class Screw : Module
 {
     public override ScadObject Content => new Union
     {
-        cylinder(5,2.6, fn: 16),
-        cylinder(20,1.6, fn: 16).Translate(z:2.4)
-    }.Rotate( x: -90 );
+        cylinder(3.5,2.6, fn: 32),
+        cylinder(40,1.6, fn: 32)
+    }.Rotate( x: -90 ).Translate( y: -3.5 );
 }

@@ -5,3 +5,9 @@ new Scene( "front" )
 {
     new Front()
 }.Save( "output", savePNG: true /* , saveSTL: true */ );
+
+new Scene( "module" )
+{
+    new TftModule()
+}.Save( "output", savePNG: true /* , saveSTL: true */ );
+
