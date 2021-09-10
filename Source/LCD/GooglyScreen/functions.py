@@ -2,12 +2,10 @@ import httpclient, network, machine, ujson, framebuf
 
 from secrets import functionsUrl, ssid, password
 
+wlan = network.WLAN(network.AP_IF)
+wlan.active(False)
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
-
-print(functionsUrl)
-print(ssid)
-print(password)
 
 
 def connect():
@@ -40,21 +38,22 @@ def push_data(environment_data, silent=True):
 
 def eye_framebuffer():
     # 160*160 bits == 3200 bytes
-    # not sure about MONO_VLSB, MONO_HLSB, MONO_HMSB tho
-    fbuf = framebuf.FrameBuffer(bytearray(3200), 160, 160, framebuf.MONO_VLSB)
-    fbuf.fill(1)
-    return drawcircle(fbuf, 160, 0)
+    return drawcircle(160, 1, 0)
 
 
 def pupil_framebuffer():
     # 64*64 bits == 512 bytes
-    # there are 2 and 4 bit options, grayscale edges coule be done in circle()
-    fbuf = framebuf.FrameBuffer(bytearray(512), 64, 64, framebuf.MONO_VLSB)
-    fbuf.fill(0)
-    return drawcircle(fbuf, 64, 1)
+    return drawcircle(64, 1, 0)
 
 
-def drawcircle(fbuf, r, color):
+# there are 2 and 4 bit options, grayscale edges could be done in circle()
+# not sure about MONO_VLSB, MONO_HLSB, MONO_HMSB tho
+def drawcircle(r, bg, color):
+
+    fbuf = framebuf.FrameBuffer(bytearray((r * r) / 8), r, r,
+                                framebuf.MONO_VLSB)
+    fbuf.fill(bg)
+
     d = r * 2
     for x in range(d):
         for y in range(d):
