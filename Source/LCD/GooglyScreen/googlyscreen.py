@@ -1,8 +1,10 @@
 # Bundles Input and Output hardware of GooglyEyes project
 
-import si7021, ssd1306, lis3dh, uarray, const
+from micropython import const
 
-IDLE_VALUE = const(1)
+import si7021, ssd1306, lis3dh
+
+IDLE_VALUE = const(0)
 IDLE_COUNT = const(2000)
 
 
@@ -35,7 +37,7 @@ class GooglyScreen(object):
 
     @property
     def idle(self):
-        return self.idle_readings > self.idle_count or self.idle_readings == -IDLE_COUNT
+        return self.idle_readings > IDLE_COUNT or self.idle_readings == -IDLE_COUNT
 
     @property
     def xaxis_reading(self):
@@ -80,13 +82,13 @@ class GooglyScreen(object):
 
     def tap_wait(self, time, callback):
         import machine
-        self.accelerometer.set_tap(2, 16)
+        self.accelerometer.set_tap(2, 32, time_limit=255, time_latency=255)
 
         timer = machine.Timer(42)
-        timer.init(period=time, mode=Timer.PERIODIC, callback=callback)
+        timer.init(period=time, mode=machine.Timer.PERIODIC, callback=callback)
 
         while not self.accelerometer.tapped:
-            machine.lightsleep(50)
+            pass
 
         timer.deinit()
-        self.accelerometer.set_tap(0, 16)
+        self.accelerometer.set_tap(0, 1)
