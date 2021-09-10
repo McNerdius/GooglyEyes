@@ -15,7 +15,7 @@ class Shell : Module
 
     public static (int XY, int Z) Size = (50, 43);
 
-    public static ScadObject Nut = new Cylinder( 2.2, 3, fn: 6 )
+    public static ScadObject Nut = new Cylinder( 2.5, 3.2, fn: 6 )
            .Rotate( z: 30 )
            .Translate( x: (Size.XY / 2f) - 4.5, y: (Size.XY / 2f) - 4.5, z: -0.1 );
 

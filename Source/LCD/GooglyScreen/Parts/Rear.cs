@@ -15,7 +15,7 @@ class Rear : Module
                 .Translate( x: Width / 2f, y: TftModule.BoardThickness, z: Height / 2 );
 
     private static ScadObject nut
-        => new Nut().Translate(
+        => new Cylinder( 2.5, 3.2, fn: 6 ).Translate(
                         x: TftModule.ScrewOffsets.X,
                         y: Depth / 2 + Front.Depth - TftModule.Glass.Thickness + 2.1,
                         z: TftModule.ScrewOffsets.Z );
