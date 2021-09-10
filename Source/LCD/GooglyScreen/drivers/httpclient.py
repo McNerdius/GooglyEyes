@@ -1,4 +1,4 @@
-import usocket
+import usocket, machine
 import ujson
 try:
     import ussl
@@ -51,10 +51,15 @@ class Response(object):
 
 # Adapted from upip
 def request(method, url, json=None, timeout=None, headers=None):
+    print("@request")
+    machine.lightsleep(100)
+
     urlparts = url.split('/', 3)
     proto = urlparts[0]
     host = urlparts[2]
     urlpath = '' if len(urlparts) < 4 else urlparts[3]
+
+    machine.lightsleep(100)
 
     if proto == 'http:':
         port = 80
@@ -73,9 +78,11 @@ def request(method, url, json=None, timeout=None, headers=None):
     else:
         content = None
 
+    print("@ai")
+    machine.lightsleep(100)
+
     ai = usocket.getaddrinfo(host, port)
     addr = ai[0][4]
-
     sock = usocket.socket()
 
     if timeout is not None:
@@ -84,9 +91,9 @@ def request(method, url, json=None, timeout=None, headers=None):
 
     sock.connect(addr)
 
-    if proto == 'https:':
-        assert SUPPORT_SSL, 'HTTPS not supported: could not find ussl'
-        sock = ussl.wrap_socket(sock)
+    # if proto == 'https:':
+    #     assert SUPPORT_SSL, 'HTTPS not supported: could not find ussl'
+    #     sock = ussl.wrap_socket(sock)
 
     sock.write('%s /%s HTTP/1.0\r\nHost: %s\r\n' % (method, urlpath, host))
 
