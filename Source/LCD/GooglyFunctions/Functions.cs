@@ -51,7 +51,7 @@ public static class Functions
 
     [FunctionName( "GetReading" )]
     public static async Task<IActionResult> GetReading(
-    [HttpTrigger( AuthorizationLevel.Anonymous, "get", "post" )] HttpRequest _,
+    [HttpTrigger( AuthorizationLevel.Anonymous, "get", "post" )] HttpRequest httpRequest,
     [Blob( "googly/readings.json", FileAccess.Read )] Stream blobInput,
     ILogger log )
     {
@@ -59,6 +59,7 @@ public static class Functions
         {
             if ( blobInput is null )
             {
+                log.LogError( "blob not found" );
                 return new NotFoundResult();
             }
             else
