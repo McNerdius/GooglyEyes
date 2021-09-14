@@ -294,35 +294,20 @@ union() // SharpSCAD generated scene: rear
         }
         translate( v= [ 33, 14.1, 18.75 ] )
         {
-          { // module: nut
-            rotate( a= [ -90, 0, 0 ] )
-            {
-              cylinder( r= 3, $fn= 6, h= 2 );
-            }
-          }
+          cylinder( r= 3.2, $fn= 6, h= 2.5 );
         }
         mirror( v= [ 1, 0, 0 ] )
         {
           translate( v= [ 33, 14.1, 18.75 ] )
           {
-            { // module: nut
-              rotate( a= [ -90, 0, 0 ] )
-              {
-                cylinder( r= 3, $fn= 6, h= 2 );
-              }
-            }
+            cylinder( r= 3.2, $fn= 6, h= 2.5 );
           }
         }
         mirror( v= [ 0, 0, 1 ] )
         {
           translate( v= [ 33, 14.1, 18.75 ] )
           {
-            { // module: nut
-              rotate( a= [ -90, 0, 0 ] )
-              {
-                cylinder( r= 3, $fn= 6, h= 2 );
-              }
-            }
+            cylinder( r= 3.2, $fn= 6, h= 2.5 );
           }
         }
         mirror( v= [ 0, 0, 1 ] )
@@ -331,12 +316,7 @@ union() // SharpSCAD generated scene: rear
           {
             translate( v= [ 33, 14.1, 18.75 ] )
             {
-              { // module: nut
-                rotate( a= [ -90, 0, 0 ] )
-                {
-                  cylinder( r= 3, $fn= 6, h= 2 );
-                }
-              }
+              cylinder( r= 3.2, $fn= 6, h= 2.5 );
             }
           }
         }
