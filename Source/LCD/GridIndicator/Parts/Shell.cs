@@ -39,7 +39,9 @@ class Shell : Module
                     .Rotate(x:90)
                     .Scale(x:2.5)
                     .Translate(z:2)
-            }.Translate(x:-7, z: 4+1.5)
+            }.Translate(x:-7, z: 4+1.5),
+
+            cube(2,32,6,center:true).Translate(x:Size.XY/2-1.9,z:30),
         },
 
         Nut,
@@ -50,7 +52,12 @@ class Shell : Module
         Screw,
         Screw.Mirror(x:true),
         Screw.Mirror(y:true),
-        Screw.Mirror(x:true).Mirror(y:true)
+        Screw.Mirror(x:true).Mirror(y:true),
+
+        Button.Base.Translate(x:Size.XY/2f-1,z:30),
+        Button.Stem.Translate(x:Size.XY/2f-1.1,z:30),
+
+        new Battery().Scale(1.12).Translate( x: 16.15, z: 14 )
 
     }.Color( "gray" );
 }

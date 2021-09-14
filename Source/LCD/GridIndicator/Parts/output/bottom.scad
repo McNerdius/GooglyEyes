@@ -87,12 +87,16 @@ union() // SharpSCAD generated scene: bottom
               }
             }
           }
+          translate( v= [ 23.1, 0, 30 ] )
+          {
+            cube( size= [ 2, 32, 6 ], center= true );
+          }
         }
         translate( v= [ 20.5, 20.5, -0.1 ] )
         {
           rotate( a= [ 0, 0, 30 ] )
           {
-            cylinder( r= 3, $fn= 6, h= 2.2 );
+            cylinder( r= 3.2, $fn= 6, h= 2.5 );
           }
         }
         mirror( v= [ 1, 0, 0 ] )
@@ -101,7 +105,7 @@ union() // SharpSCAD generated scene: bottom
           {
             rotate( a= [ 0, 0, 30 ] )
             {
-              cylinder( r= 3, $fn= 6, h= 2.2 );
+              cylinder( r= 3.2, $fn= 6, h= 2.5 );
             }
           }
         }
@@ -111,7 +115,7 @@ union() // SharpSCAD generated scene: bottom
           {
             rotate( a= [ 0, 0, 30 ] )
             {
-              cylinder( r= 3, $fn= 6, h= 2.2 );
+              cylinder( r= 3.2, $fn= 6, h= 2.5 );
             }
           }
         }
@@ -123,7 +127,7 @@ union() // SharpSCAD generated scene: bottom
             {
               rotate( a= [ 0, 0, 30 ] )
               {
-                cylinder( r= 3, $fn= 6, h= 2.2 );
+                cylinder( r= 3.2, $fn= 6, h= 2.5 );
               }
             }
           }
@@ -180,6 +184,77 @@ union() // SharpSCAD generated scene: bottom
                   cylinder( r= 2.6, $fn= 32, h= 3.5 );
                 }
                 cylinder( r= 1.6, $fn= 32, h= 43.1 );
+              }
+            }
+          }
+        }
+        translate( v= [ 24, 0, 30 ] )
+        {
+          rotate( a= [ 0, -90, 0 ] )
+          {
+            cylinder( r= 7.1, $fn= 24, h= 4.5 );
+          }
+        }
+        translate( v= [ 23.9, 0, 30 ] )
+        {
+          rotate( a= [ 0, 90, 0 ] )
+          {
+            cylinder( r= 4.1, $fn= 24, h= 4 );
+          }
+        }
+        translate( v= [ 16.15, 0, 14 ] )
+        {
+          scale( v= [ 1.12, 1, 1 ] )
+          {
+            { // module: battery
+              color( c= "royalblue" )
+              {
+                { // module: roundedcube
+                  translate( v= [ -7, -18, -10.5 ] )
+                  {
+                    translate( v= [ 0, 0, 0 ] )
+                    {
+                      hull()
+                      {
+                        translate( v= [ 2, 2, 2 ] )
+                        {
+                          sphere( r= 2, $fn= 32 );
+                        }
+                        translate( v= [ 2, 34, 2 ] )
+                        {
+                          sphere( r= 2, $fn= 32 );
+                        }
+                        translate( v= [ 2, 2, 19 ] )
+                        {
+                          sphere( r= 2, $fn= 32 );
+                        }
+                        translate( v= [ 2, 34, 19 ] )
+                        {
+                          sphere( r= 2, $fn= 32 );
+                        }
+                        translate( v= [ 12, 2, 2 ] )
+                        {
+                          sphere( r= 2, $fn= 32 );
+                        }
+                        translate( v= [ 12, 34, 2 ] )
+                        {
+                          sphere( r= 2, $fn= 32 );
+                        }
+                        translate( v= [ 12, 2, 19 ] )
+                        {
+                          sphere( r= 2, $fn= 32 );
+                        }
+                        translate( v= [ 12, 34, 19 ] )
+                        {
+                          sphere( r= 2, $fn= 32 );
+                        }
+                        union()
+                        {
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
