@@ -11,8 +11,6 @@ IDLE_COUNT = const(2000)
 class GooglyScreen(object):
     def __init__(self, i2c):
 
-        self.test_screen = ssd1306.SSD1306_I2C(128, 32, i2c)
-        self.rh_temp_sensor = si7021.Si7021(i2c)
         self.accelerometer = lis3dh.LIS3DH_I2C(i2c)
         self.accelerometer.range = lis3dh.RANGE_8_G
         self.test_screen.contrast(0)
@@ -21,19 +19,6 @@ class GooglyScreen(object):
 
     def idle_reset(self):
         self.idle_readings = -IDLE_COUNT
-
-    @property
-    def environment_data(self):
-        return {
-            "Temperature":
-            round(
-                si7021.convert_celcius_to_fahrenheit(
-                    self.rh_temp_sensor.temperature), 1),
-            "Humidity":
-            round(self.rh_temp_sensor.relative_humidity, 1),
-            "Idle":
-            self.idle
-        }
 
     @property
     def idle(self):
@@ -59,26 +44,13 @@ class GooglyScreen(object):
         return x + "," + y + "," + z
 
     def clear(self):
-        self.test_screen.fill(0)
-        self.test_screen.show()
-
+        pass
+        
     def text(self, text, x, y, clear=False):
-        if (clear):
-            self.test_screen.fill(0)
-        self.test_screen.text(text, x, y)
-        self.test_screen.show()
+        pass
 
     def refresh(self):
         environment_data = self.environment_data
-        temp = str(environment_data["Temperature"])
-        rh = str(environment_data["Humidity"])
-
-        self.test_screen.fill(0)
-        self.test_screen.text(temp + " f  " + rh + " rh", 8, 0, 1)
-        self.test_screen.text("idle: " + str(self.idle), 24, 12, 1)
-        self.test_screen.text(self.acceleration_text, 2, 24, 1)
-
-        self.test_screen.show()
 
     def tap_wait(self, time, callback):
         import machine
