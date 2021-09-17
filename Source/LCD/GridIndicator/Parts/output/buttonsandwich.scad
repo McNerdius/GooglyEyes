@@ -3,10 +3,10 @@ union() // SharpSCAD generated scene: buttonsandwich
   { // module: buttonsandwich
     difference()
     {
-      translate( v= [ -3.5, 0, 8 ] )
+      translate( v= [ 0, -3.5, 6 ] )
       {
         { // module: roundedcube
-          translate( v= [ -3.5, -23.5, -8 ] )
+          translate( v= [ -23.5, -3.5, -6 ] )
           {
             translate( v= [ 0, 0, 0 ] )
             {
@@ -16,39 +16,39 @@ union() // SharpSCAD generated scene: buttonsandwich
                 {
                   sphere( r= 1, $fn= 32 );
                 }
-                translate( v= [ 1, 46, 1 ] )
+                translate( v= [ 1, 6, 1 ] )
                 {
                   sphere( r= 1, $fn= 32 );
                 }
-                translate( v= [ 1, 1, 15 ] )
+                translate( v= [ 1, 1, 11 ] )
                 {
                   sphere( r= 1, $fn= 32 );
                 }
-                translate( v= [ 1, 46, 15 ] )
+                translate( v= [ 1, 6, 11 ] )
                 {
                   sphere( r= 1, $fn= 32 );
                 }
-                translate( v= [ 6, 1, 1 ] )
+                translate( v= [ 46, 1, 1 ] )
                 {
                   sphere( r= 1, $fn= 32 );
                 }
-                translate( v= [ 6, 46, 1 ] )
+                translate( v= [ 46, 6, 1 ] )
                 {
                   sphere( r= 1, $fn= 32 );
                 }
-                translate( v= [ 6, 1, 15 ] )
+                translate( v= [ 46, 1, 11 ] )
                 {
                   sphere( r= 1, $fn= 32 );
                 }
-                translate( v= [ 6, 46, 15 ] )
+                translate( v= [ 46, 6, 11 ] )
                 {
                   sphere( r= 1, $fn= 32 );
                 }
                 union()
                 {
-                  translate( v= [ 6, 0, 0 ] )
+                  translate( v= [ 0, 6, 0 ] )
                   {
-                    cube( size= [ 1, 47, 16 ] );
+                    cube( size= [ 47, 1, 12 ] );
                   }
                 }
               }
@@ -58,67 +58,67 @@ union() // SharpSCAD generated scene: buttonsandwich
       }
       union()
       {
-        translate( v= [ 0.1, 0, 8 ] )
+        translate( v= [ 0, 0.1, 6 ] )
         {
           { // module: button
             union()
             {
-              translate( v= [ -1.4, 0, 0 ] )
+              translate( v= [ 0, -1.9, 0 ] )
               {
-                cube( size= [ 2.8, 32, 7 ], center= true );
+                cube( size= [ 32, 4, 7 ], center= true );
               }
-              rotate( a= [ 0, -90, 0 ] )
+              rotate( a= [ 90, 0, 0 ] )
               {
-                cylinder( r= 7.1, $fn= 24, h= 4.5 );
+                cylinder( r= 7.2, $fn= 24, h= 4.5 );
               }
-              rotate( a= [ 0, 90, 0 ] )
+              rotate( a= [ -90, 0, 0 ] )
               {
                 cylinder( r= 4.1, $fn= 24, h= 4 );
               }
             }
           }
         }
-        translate( v= [ -3.5, 11.5, 12.5 ] )
+        translate( v= [ 12, -3.5, 8.5 ] )
         {
-          rotate( a= [ 0, 90, 0 ] )
+          rotate( a= [ 90, 0, 0 ] )
           {
             cylinder( r= 2.4, center= true, $fn= 24, h= 9 );
           }
         }
-        translate( v= [ -3.5, -11.5, 12.5 ] )
+        translate( v= [ -12, -3.5, 8.5 ] )
         {
-          rotate( a= [ 0, 90, 0 ] )
+          rotate( a= [ 90, 0, 0 ] )
           {
             cylinder( r= 2.4, center= true, $fn= 24, h= 9 );
           }
         }
       }
-      translate( v= [ -24, 0, 0 ] )
+      translate( v= [ 0, -24, 0 ] )
       {
         union()
         {
-          translate( v= [ 20.5, 20.5, -0.1 ] )
+          translate( v= [ 19.5, 19.5, -0.1 ] )
           {
             union()
             {
-              translate( v= [ 0, 0, 39.6 ] )
+              translate( v= [ 0, 0, 31.3 ] )
               {
-                cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                cylinder( r= 2.7, $fn= 32, h= 3.8 );
               }
-              cylinder( r= 1.6, $fn= 32, h= 43.1 );
+              cylinder( r= 1.7, $fn= 32, h= 35.1 );
             }
           }
-          mirror( v= [ 0, 1, 0 ] )
+          mirror( v= [ 1, 0, 0 ] )
           {
-            translate( v= [ 20.5, 20.5, -0.1 ] )
+            translate( v= [ 19.5, 19.5, -0.1 ] )
             {
               union()
               {
-                translate( v= [ 0, 0, 39.6 ] )
+                translate( v= [ 0, 0, 31.3 ] )
                 {
-                  cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                  cylinder( r= 2.7, $fn= 32, h= 3.8 );
                 }
-                cylinder( r= 1.6, $fn= 32, h= 43.1 );
+                cylinder( r= 1.7, $fn= 32, h= 35.1 );
               }
             }
           }

@@ -3,7 +3,7 @@ union() // SharpSCAD generated scene: lid
   { // module: lid
     difference()
     {
-      translate( v= [ 0, 0, 43 ] )
+      translate( v= [ 0, 0, 35 ] )
       {
         union()
         {
@@ -112,7 +112,7 @@ union() // SharpSCAD generated scene: lid
           }
         }
       }
-      translate( v= [ -7.5, 0, 40 ] )
+      translate( v= [ -7.5, 0, 32 ] )
       {
         scale( v= [ 1.1, 1.1, 1 ] )
         {
@@ -120,13 +120,13 @@ union() // SharpSCAD generated scene: lid
             union()
             {
               { // module: d1_footprint
-                translate( v= [ 0, 0, 2 ] )
+                translate( v= [ 0, 0, 1.8 ] )
                 {
                   union()
                   {
                     color( c= "darkcyan" )
                     {
-                      cube( size= [ 26, 35, 4 ], center= true );
+                      cube( size= [ 35, 26, 3.6 ], center= true );
                     }
                   }
                 }
@@ -144,15 +144,15 @@ union() // SharpSCAD generated scene: lid
       }
       translate( v= [ 0, 0, 3 ] )
       {
-        translate( v= [ 20.5, 20.5, -0.1 ] )
+        translate( v= [ 19.5, 19.5, -0.1 ] )
         {
           union()
           {
-            translate( v= [ 0, 0, 39.6 ] )
+            translate( v= [ 0, 0, 31.3 ] )
             {
-              cylinder( r= 2.6, $fn= 32, h= 3.5 );
+              cylinder( r= 2.7, $fn= 32, h= 3.8 );
             }
-            cylinder( r= 1.6, $fn= 32, h= 43.1 );
+            cylinder( r= 1.7, $fn= 32, h= 35.1 );
           }
         }
       }
@@ -160,15 +160,15 @@ union() // SharpSCAD generated scene: lid
       {
         translate( v= [ 0, 0, 3 ] )
         {
-          translate( v= [ 20.5, 20.5, -0.1 ] )
+          translate( v= [ 19.5, 19.5, -0.1 ] )
           {
             union()
             {
-              translate( v= [ 0, 0, 39.6 ] )
+              translate( v= [ 0, 0, 31.3 ] )
               {
-                cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                cylinder( r= 2.7, $fn= 32, h= 3.8 );
               }
-              cylinder( r= 1.6, $fn= 32, h= 43.1 );
+              cylinder( r= 1.7, $fn= 32, h= 35.1 );
             }
           }
         }
@@ -177,15 +177,15 @@ union() // SharpSCAD generated scene: lid
       {
         translate( v= [ 0, 0, 3 ] )
         {
-          translate( v= [ 20.5, 20.5, -0.1 ] )
+          translate( v= [ 19.5, 19.5, -0.1 ] )
           {
             union()
             {
-              translate( v= [ 0, 0, 39.6 ] )
+              translate( v= [ 0, 0, 31.3 ] )
               {
-                cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                cylinder( r= 2.7, $fn= 32, h= 3.8 );
               }
-              cylinder( r= 1.6, $fn= 32, h= 43.1 );
+              cylinder( r= 1.7, $fn= 32, h= 35.1 );
             }
           }
         }
@@ -196,15 +196,15 @@ union() // SharpSCAD generated scene: lid
         {
           translate( v= [ 0, 0, 3 ] )
           {
-            translate( v= [ 20.5, 20.5, -0.1 ] )
+            translate( v= [ 19.5, 19.5, -0.1 ] )
             {
               union()
               {
-                translate( v= [ 0, 0, 39.6 ] )
+                translate( v= [ 0, 0, 31.3 ] )
                 {
-                  cylinder( r= 2.6, $fn= 32, h= 3.5 );
+                  cylinder( r= 2.7, $fn= 32, h= 3.8 );
                 }
-                cylinder( r= 1.6, $fn= 32, h= 43.1 );
+                cylinder( r= 1.7, $fn= 32, h= 35.1 );
               }
             }
           }

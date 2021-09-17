@@ -9,26 +9,26 @@ class ButtonSandwich : Module
 {
     public static int Width = 47;
     public static int Depth = 7;
-    public static int Height = 16;
+    public static int Height = 12;
 
     public override ScadObject Content
     {
         get
         {
-            var body = new RoundedCube( Depth, Width, Height, 1, center: true )
+            var body = new RoundedCube( Width, Depth, Height, 1, center: true )
             {
-                Rounded = new RoundedCube.Rounding( Front: false )
-            }.Translate( x: -Depth / 2f, z: Height / 2f );
+                Rounded = new RoundedCube.Rounding( Right: false )
+            }.Translate( y: -Depth / 2f, z: Height / 2f );
 
             var wireCutouts = new Union
             {
-                new Button().Translate( x: 0.1, z: 8 ),
+                new Button().Translate(y: 0.1, z: Height/2f),
 
                 cylinder(Depth+2,2.4,center:true,fn:24)
-                    .Rotate(y:90).Translate(x: -Depth / 2f,y:8+3.5,z:ButtonSandwich.Height - 3.5),
+                    .Rotate(x:90).Translate(y: -Depth / 2f,x:12,z:Height - 3.5),
 
                 cylinder(Depth+2,2.4,center:true,fn:24)
-                    .Rotate(y:90).Translate(x: -Depth / 2f,y:-8-3.5,z:ButtonSandwich.Height - 3.5)
+                    .Rotate(x:90).Translate(y: -Depth / 2f,x:-12,z:Height - 3.5)
             };
 
             return new Difference( body )
@@ -37,8 +37,8 @@ class ButtonSandwich : Module
                 new Union
                 {
                     Shell.Screw,
-                    Shell.Screw.Mirror(y:true),
-                }.Translate(x:-Shell.Size.XY/2f+1)
+                    Shell.Screw.Mirror(x:true),
+                }.Translate(y:-Shell.Size.XY/2f+1)
             };
         }
     }
