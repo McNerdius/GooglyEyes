@@ -12,6 +12,17 @@ import adafruit_ili9341
 
 displayio.release_displays()
 
+i2c = busio.I2C(scl=IO39, sda=IO37)
+while not i2c.try_lock():
+    pass
+print(i2c.scan())
+i2c.unlock()
+
+import googlyscreen
+
+screen = googlyscreen.GooglyScreen(i2c)
+
+
 sck = IO7
 miso = IO9
 mosi = IO11
@@ -24,22 +35,16 @@ tft_dc = IO12
 display_bus = displayio.FourWire(
     spi, command=tft_dc, chip_select=tft_cs
 )
-display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
+display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240, rotation= 180)
 
-# Make the display context
 splash = displayio.Group()
 display.show(splash)
 
-# Draw a label
 top_text_group = displayio.Group(scale=2, x=90, y=20)
-text = "Hello World!"
-text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF)
-top_text_group.append(text_area)  # Subgroup for text scaling
+top_text_group.append(label.Label(terminalio.FONT, text="Hello World!", color=0xFFFFFF))  # Subgroup for text scaling
 splash.append(top_text_group)
 
 main_group = displayio.Group(x=0,y=39)
-
-# bitmap = displayio.Bitmap(320, 160, 3)
 
 palette_black = displayio.Palette(1)
 palette_black[0] = 0x000000  
@@ -64,11 +69,24 @@ main_group.append(right)
 
 splash.append(main_group)
 
-while True:
+bottom_text_group = displayio.Group(scale=2, x=70, y=220)
+bottom_label = label.Label(terminalio.FONT, text=screen.acceleration_text, color=0xFFFFFF)
+bottom_text_group.append(bottom_label)  # Subgroup for text scaling
+splash.append(bottom_text_group)
 
+count = 0
+
+while True:
+    
+    if (count == 10):
+        bottom_label.text = screen.acceleration_text
+        count = 0
+    else:
+        count += 1
+        
     left.x +=  random.choice([-1,0,1])
     left.y +=  random.choice([-1,0,1])
     right.x += random.choice([-1,0,1])
     right.y += random.choice([-1,0,1])
-    time.sleep(0.05)
+    time.sleep(0.01)
     pass
