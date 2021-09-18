@@ -1,4 +1,4 @@
-import httpclient, network, machine, ujson
+import httpclient, network, machine
 
 from secrets import functionsUrl, ssid, password
 

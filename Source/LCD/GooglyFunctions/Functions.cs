@@ -33,9 +33,6 @@ public static class Functions
             };
 
             var reading = JsonSerializer.Deserialize<Reading>( await httpRequest.ReadAsStringAsync() );
-            var time = TimeZoneInfo.ConvertTimeFromUtc( DateTime.UtcNow, TimeZoneInfo.CreateCustomTimeZone( "MST", TimeSpan.FromHours( -6 ), "MST", "MST" ) );
-            reading.Time = time.ToString();
-
             readings = readings.Take( 100 ).Prepend( reading );
 
             await JsonSerializer.SerializeAsync( blobOutput, readings, new JsonSerializerOptions { WriteIndented = true } );
@@ -65,6 +62,26 @@ public static class Functions
             else
             {
                 var reading = (await JsonSerializer.DeserializeAsync<IEnumerable<Reading>>( blobInput )).First();
+
+                var time = TimeZoneInfo.ConvertTimeFromUtc( DateTime.UtcNow, TimeZoneInfo.CreateCustomTimeZone( "MST", TimeSpan.FromHours( -6 ), "MST", "MST" ) ).TimeOfDay;
+
+                log.LogInformation( time.ToString(), null );
+
+                reading.Time = MatrixClock.ToByteArray( time ).Reverse().ToArray();
+                Console.WriteLine( "----------" );
+                reading.Time.ToList().ForEach( row => draw( row, reverse: true ) );
+                Console.WriteLine( "----------" );
+
+                void draw( int row, bool reverse )
+                {
+                    Console.Write( "|" );
+                    foreach ( var bit in Enumerable.Range( 0, 8 ) )
+                    {
+                        var set = (row & 1 << bit) > 0;
+                        Console.Write( set ? '#' : ' ' );
+                    }
+                    Console.WriteLine( "|" );
+                }
 
                 return new ContentResult
                 {
