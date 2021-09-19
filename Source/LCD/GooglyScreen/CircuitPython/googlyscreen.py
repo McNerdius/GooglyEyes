@@ -40,17 +40,6 @@ class GooglyScreen(object):
         return self.idle_readings > IDLE_COUNT or self.idle_readings == -IDLE_COUNT
 
     @property
-    def xaxis_reading(self):
-        reading = self.accelerometer.acceleration.x
-
-        if (IDLE_VALUE > reading):
-            self.idle_readings += 1
-        else:
-            self.idle_readings = 0
-
-        return reading
-
-    @property
     def acceleration_text(self):
         a = self.accelerometer.acceleration
         x = str(round(a.x, 1))
@@ -64,8 +53,8 @@ class GooglyScreen(object):
         self.display.show(splash)
 
         top_text_group = displayio.Group(scale=2, x=90, y=20)
-        self.top_label = label.Label(terminalio.FONT, text="Hello World!", color=0xFFFFFF)
-        top_text_group.append(self.top_label)  # Subgroup for text scaling
+        # self.top_label = label.Label(terminalio.FONT, text="Hello World!", color=0xFFFFFF)
+        # top_text_group.append(self.top_label)  # Subgroup for text scaling
         splash.append(top_text_group)
 
         main_group = displayio.Group(x=0,y=39)
@@ -85,15 +74,15 @@ class GooglyScreen(object):
         splash.append(main_group)
 
         bottom_text_group = displayio.Group(scale=2, x=70, y=220)
-        self.bottom_label = label.Label(terminalio.FONT, text=self.acceleration_text, color=0xFFFFFF)
-        bottom_text_group.append(self.bottom_label)  # Subgroup for text scaling
+        # self.bottom_label = label.Label(terminalio.FONT, text=self.acceleration_text, color=0xFFFFFF)
+        # bottom_text_group.append(self.bottom_label)  # Subgroup for text scaling
         splash.append(bottom_text_group)
 
     def read_accelerometer(self):
         reading = self.accelerometer.acceleration
-        return (reading.x,reading.y)
+        return (reading.x*4,reading.y/4)
 
-    def refresh(self, scale=0.00001):
+    def refresh(self, scale):
 
         (aX, aY) = self.read_accelerometer()
         googlymath.move(self.left_eye, aX * scale, aY * scale )
@@ -101,8 +90,8 @@ class GooglyScreen(object):
         (aX, aY) = self.read_accelerometer()
         googlymath.move(self.right_eye, aX * scale, aY * scale )
 
-        self.top_label.text = str(self.left_eye.position)
-        self.bottom_label.text = self.acceleration_text
+        # self.top_label.text = str(self.left_eye.pupil_position)
+        # self.bottom_label.text = self.acceleration_text
 
     def tap_wait(self, time, callback):
         import machine
