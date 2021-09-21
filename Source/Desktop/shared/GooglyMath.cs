@@ -100,11 +100,11 @@ public static class GooglyMath
             float vX = (eye.PupilVelocity.X + aX) * Drag;
             float vY = (eye.PupilVelocity.Y + aY) * Drag;
 
-            float totalVelocity = SumOfSquares( vX, vY );
-            if ( totalVelocity > Pow( eye.PupilDiameter, 2 ) )
+            float v = SumOfSquares( vX, vY );
+            if ( v > Pow( eye.PupilDiameter, 2 ) )
             {
-                totalVelocity = eye.PupilDiameter / Sqrt( totalVelocity );
-                (vX, vY) = (vX * totalVelocity, vY * totalVelocity);
+                v = eye.PupilDiameter / Sqrt( v );
+                (vX, vY) = (vX * v, vY * v);
             }
 
             return (vX, vY);

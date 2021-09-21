@@ -24,12 +24,15 @@ class GooglyScreen(object):
         self.accelerometer = adafruit_lis3dh.LIS3DH_I2C(i2c)
         self.accelerometer.range = adafruit_lis3dh.RANGE_8_G
         self.idle_readings = -IDLE_COUNT
-        
-        self.display = adafruit_ili9341.ILI9341(fourwire, width=320, height=240, rotation= 180)
 
-        self.left_eye = GooglyEye(80,32,80,80)
-        self.right_eye = GooglyEye(80,44,80+160,80)
-        
+        self.display = adafruit_ili9341.ILI9341(fourwire,
+                                                width=320,
+                                                height=240,
+                                                rotation=180)
+
+        self.left_eye = GooglyEye(80, 32, 80, 80)
+        self.right_eye = GooglyEye(80, 44, 80 + 160, 80)
+
         self.clear()
 
     def idle_reset(self):
@@ -57,18 +60,28 @@ class GooglyScreen(object):
         # top_text_group.append(self.top_label)  # Subgroup for text scaling
         splash.append(top_text_group)
 
-        main_group = displayio.Group(x=0,y=39)
+        main_group = displayio.Group(x=0, y=39)
 
         palette_black = displayio.Palette(1)
         palette_black[0] = 0x000000
         palette_white = displayio.Palette(1)
         palette_white[0] = 0xFFFFFF
 
-        main_group.append(vectorio.Rectangle(pixel_shader=palette_black, width= 320, height= 160, x= 0, y= 0))
-        main_group.append(vectorio.Circle(pixel_shader=palette_white, radius=80, x=80, y=80))
-        main_group.append(vectorio.Circle(pixel_shader=palette_white, radius=80, x=80+160, y=80))
+        main_group.append(
+            vectorio.Rectangle(pixel_shader=palette_black,
+                               width=320,
+                               height=160,
+                               x=0,
+                               y=0))
+        main_group.append(
+            vectorio.Circle(pixel_shader=palette_white, radius=80, x=80, y=80))
+        main_group.append(
+            vectorio.Circle(pixel_shader=palette_white,
+                            radius=80,
+                            x=80 + 160,
+                            y=80))
 
-        main_group.append(self.left_eye.pupil )
+        main_group.append(self.left_eye.pupil)
         main_group.append(self.right_eye.pupil)
 
         splash.append(main_group)
@@ -80,15 +93,14 @@ class GooglyScreen(object):
 
     def read_accelerometer(self):
         reading = self.accelerometer.acceleration
-        return (reading.x*4,reading.y/4)
+        return (reading.x * 4, reading.y / 4)
 
     def refresh(self, scale):
 
         (aX, aY) = self.read_accelerometer()
-        googlymath.move(self.left_eye, aX * scale, aY * scale )
 
-        (aX, aY) = self.read_accelerometer()
-        googlymath.move(self.right_eye, aX * scale, aY * scale )
+        googlymath.move(self.left_eye, aX * scale, aY * scale)
+        googlymath.move(self.right_eye, aX * scale, aY * scale)
 
         # self.top_label.text = str(self.left_eye.pupil_position)
         # self.bottom_label.text = self.acceleration_text
