@@ -4,8 +4,8 @@ using SharpSCAD.McSCAD;
 class Battery : Module
 {
     public override ScadObject Content =>
-        new RoundedCube( 36, 21, 14, 2, center: true )
-           .Translate( z: 7 ).Color( "royalblue" );
+        new RoundedCube( 36, 14, 21, 2, center: true )
+           .Translate( z: 21 / 2f ).Color( "royalblue" );
 }
 
 

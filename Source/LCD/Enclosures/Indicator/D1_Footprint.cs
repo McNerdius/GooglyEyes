@@ -15,7 +15,7 @@ class D1_Footprint : Module
 
     public override ScadObject Content => new Union
     {
-        new Cube( 35, 26, Height.Board, center: true ).Color( "darkcyan" ),
+        new Cube( 36, 28, Height.Board, center: true ).Color( "darkcyan" ),
 
         Headers ? new Union
                       {

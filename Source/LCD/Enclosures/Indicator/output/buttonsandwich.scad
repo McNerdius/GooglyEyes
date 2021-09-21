@@ -1,130 +1,61 @@
 union() // SharpSCAD generated scene: buttonsandwich
 {
   { // module: buttonsandwich
-    difference()
+    color( c= "white" )
     {
-      translate( v= [ 0, -3.5, 6 ] )
+      translate( v= [ 0, 13.6, 26.5 ] )
       {
-        { // module: roundedcube
-          translate( v= [ -23.5, -3.5, -6 ] )
+        difference()
+        {
+          translate( v= [ 0, 0, 5 ] )
           {
-            translate( v= [ 0, 0, 0 ] )
-            {
-              hull()
+            cube( size= [ 30, 12, 10 ], center= true );
+          }
+          translate( v= [ 0, 0, 11.1 ] )
+          {
+            { // module: button
+              color( c= "yellow" )
               {
-                translate( v= [ 1, 1, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 1, 6, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 1, 1, 11 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 1, 6, 11 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 46, 1, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 46, 6, 1 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 46, 1, 11 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
-                translate( v= [ 46, 6, 11 ] )
-                {
-                  sphere( r= 1, $fn= 32 );
-                }
                 union()
                 {
-                  translate( v= [ 0, 6, 0 ] )
+                  translate( v= [ 0, 0, -1.5 ] )
                   {
-                    cube( size= [ 47, 1, 12 ] );
+                    cube( size= [ 31, 6, 3 ], center= true );
                   }
+                  rotate( a= [ 180, 0, 0 ] )
+                  {
+                    cylinder( r= 7.5, $fn= 64, h= 5 );
+                  }
+                  cylinder( r= 4.5, $fn= 64, h= 5 );
                 }
               }
             }
           }
-        }
-      }
-      union()
-      {
-        translate( v= [ 0, 0.1, 6 ] )
-        {
-          { // module: button
-            union()
+          mirror( v= [ 0, 1, 0 ] )
+          {
+            translate( v= [ 9, 1.1, 6 ] )
             {
-              translate( v= [ 0, -1.9, 0 ] )
-              {
-                cube( size= [ 32, 4, 7 ], center= true );
-              }
-              rotate( a= [ 90, 0, 0 ] )
-              {
-                cylinder( r= 7.4, $fn= 24, h= 4.5 );
-              }
-              rotate( a= [ -90, 0, 0 ] )
-              {
-                cylinder( r= 4.3, $fn= 24, h= 4 );
-              }
+              cube( size= 8 );
             }
           }
-        }
-        translate( v= [ 12, -3.5, 8.5 ] )
-        {
-          rotate( a= [ 90, 0, 0 ] )
+          mirror( v= [ 0, 1, 0 ] )
           {
-            cylinder( r= 2.4, center= true, $fn= 24, h= 9 );
+            translate( v= [ -17, 1.1, 6 ] )
+            {
+              cube( size= 8 );
+            }
           }
-        }
-        translate( v= [ -12, -3.5, 8.5 ] )
-        {
-          rotate( a= [ 90, 0, 0 ] )
+          translate( v= [ -30, 0, 3 ] )
           {
-            cylinder( r= 2.4, center= true, $fn= 24, h= 9 );
-          }
-        }
-      }
-      translate( v= [ 0, -23.75, 0 ] )
-      {
-        union()
-        {
-          translate( v= [ 19.5, 19.5, -0.1 ] )
-          {
-            scale( v= [ 1.05, 1.05, 1 ] )
+            rotate( a= [ 0, 90, 0 ] )
             {
               union()
               {
-                translate( v= [ 0, 0, 34.3 ] )
+                translate( v= [ 0, 0, 56.3 ] )
                 {
-                  cylinder( r= 2.7, $fn= 32, h= 4 );
+                  cylinder( r= 3.2, $fn= 32, h= 4 );
                 }
-                cylinder( r= 1.7, $fn= 32, h= 38.1 );
-              }
-            }
-          }
-          mirror( v= [ 1, 0, 0 ] )
-          {
-            translate( v= [ 19.5, 19.5, -0.1 ] )
-            {
-              scale( v= [ 1.05, 1.05, 1 ] )
-              {
-                union()
-                {
-                  translate( v= [ 0, 0, 34.3 ] )
-                  {
-                    cylinder( r= 2.7, $fn= 32, h= 4 );
-                  }
-                  cylinder( r= 1.7, $fn= 32, h= 38.1 );
-                }
+                cylinder( r= 2, $fn= 32, h= 60.1 );
               }
             }
           }

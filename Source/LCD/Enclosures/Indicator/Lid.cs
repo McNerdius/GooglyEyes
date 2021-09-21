@@ -7,30 +7,34 @@ namespace GooglyEyes.GridIndicator.Parts;
 
 public class Lid : Module
 {
-    static int Size => Shell.Size.XY;
-
-    static ScadObject screw => Shell.Screw().Translate( z: 3 );
+    static ScadObject screw => Bottom.Screw().Translate( z: 3 );
 
     public override ScadObject Content => new Difference
     {
         new Union
         {
-            new RoundedCube(Size-2.75,Size-2.75,3,1.5,center: true)
-            {
-                Rounded = new RoundedCube.Rounding { Top = false }
-            }.Translate(z:-1.5),
-            new RoundedCube(Size-0.2,Size-0.2,2.5,1,center: true)
-            {
+            new RoundedCube(Bottom.Size.X+Bottom.Thickness-0.2,Bottom.Size.Y+Bottom.Thickness-0.2,2,1,center: true)
+            {   // top
                 Rounded = new RoundedCube.Rounding { Bottom = false }
-            }.Translate(z:1.25),
+            }.Translate(z:1),
 
-        }.Translate(z:Shell.Size.Z),
+            cube(4.25,12.25,12,center:true)
+                .Translate(x:(Bottom.Size.X-5)/2f, y:13.6,z:-6),
 
-        new LED_Matrix_Shield().Rotate(z:90).Translate(x:-10,z:Shell.Size.Z-4),
+            cube(4.25,12.25,12,center:true)
+                .Translate(x:-(Bottom.Size.X-5)/2f, y:13.6,z:-6),
 
-        screw,
-        screw.Mirror(x:true),
-        screw.Mirror(y:true),
-        screw.Mirror(x:true).Mirror(y:true),
-    };
+        }.Translate(z:Bottom.Size.Z),
+
+        GooglyEyes.Parts.Shared.Screw( Bottom.Size.X+Bottom.Thickness )
+            .Rotate( y: 90 )
+            .Translate( x: -(Bottom.Size.X+Bottom.Thickness)/2f,y:13.6, z: Bottom.Size.Z-5.7-1.25 ),
+        GooglyEyes.Parts.Shared.Nut
+            .Rotate( y: 90 )
+            .Translate( x: -(Bottom.Size.X+Bottom.Thickness)/2f,y:13.6, z: Bottom.Size.Z-5.7-1.25 ),
+
+        new Button().Translate( y:13.6, z: Bottom.Size.Z - 0.1 ),
+
+        new LED_Matrix_Shield().Translate(y: -(Bottom.Size.Y-25.9)/2f, z:Bottom.Size.Z-4),
+    }.Color( "white" );
 }
