@@ -48,9 +48,10 @@ public static class Functions
 
     [FunctionName( "GetReading" )]
     public static async Task<IActionResult> GetReading(
-    [HttpTrigger( AuthorizationLevel.Anonymous, "get", "post" )] HttpRequest httpRequest,
-    [Blob( "googly/readings.json", FileAccess.Read )] Stream blobInput,
-    ILogger log )
+        [HttpTrigger( AuthorizationLevel.Anonymous, "get", "post", Route = "GetReading/{adcValue:int}" )] HttpRequest httpRequest,
+        [Blob( "googly/readings.json", FileAccess.Read )] Stream blobInput,
+        [FromQuery] int adcValue,
+        ILogger log )
     {
         try
         {
@@ -67,21 +68,16 @@ public static class Functions
 
                 log.LogInformation( time.ToString(), null );
 
-                reading.Time = MatrixClock.ToByteArray( time ).Reverse().ToArray();
-                Console.WriteLine( "----------" );
-                reading.Time.ToList().ForEach( row => draw( row, reverse: true ) );
-                Console.WriteLine( "----------" );
+                reading.Time = LedMatrix.ToByteArray( time ).Reverse().ToArray();
 
-                void draw( int row, bool reverse )
-                {
-                    Console.Write( "|" );
-                    foreach ( var bit in Enumerable.Range( 0, 8 ) )
-                    {
-                        var set = (row & 1 << bit) > 0;
-                        Console.Write( set ? '#' : ' ' );
-                    }
-                    Console.WriteLine( "|" );
-                }
+                // Raw ADC value to 2-digit 8x8 representation
+                // A0 is fed battery level split with a 350k/100k voltage divider for a max of 0.93 volts
+                // 130k on R1 from battery shield: https://www.wemos.cc/en/latest/_static/files/sch_battery_v1.3.0.pdf
+                // 220k on R1, 100k on R2 from D1 itself: https://www.wemos.cc/en/latest/_static/files/sch_d1_mini_v3.0.0.pdf
+                // 0.93 * 1023 = 951 theoretically == 100% / 4.2v
+                // volts = adc / 951 * 4.2
+                var volts = adcValue / 951f * 4.2f;
+                reading.Battery = LedMatrix.ToByteArray( volts ).Reverse().ToArray();
 
                 return new ContentResult
                 {

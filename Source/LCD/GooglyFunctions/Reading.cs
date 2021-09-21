@@ -4,4 +4,5 @@ public class Reading
 {
     public bool Idle { get; set; }
     public int[] Time { get; set; }
+    public int[] Battery { get; set; }
 }

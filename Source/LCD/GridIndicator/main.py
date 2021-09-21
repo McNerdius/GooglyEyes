@@ -1,13 +1,19 @@
 import machine
 import functions, tm1640
 
+adc = machine.ADC(0)
+
 matrix = tm1640.TM1640(clk=machine.Pin(14), dio=machine.Pin(13))
 matrix.write([255, 129, 189, 165, 165, 189, 129, 255])
-machine.lightsleep(500)
 
 while True:
 
-    reading = functions.pull_data()
+    v_bat = adc.read()
+    reading = functions.pull_data(v_bat)
+
+    matrix.write([0, 0, 0, 0, 0, 0, 0, 0])
+    matrix.write(reading["Battery"])
+    machine.lightsleep(10 * 1000)
 
     if (reading["Idle"]):
         matrix.brightness(7)
@@ -16,4 +22,4 @@ while True:
         matrix.brightness(1)
         matrix.write(reading["Time"])
 
-    machine.lightsleep(59 * 1000)
+    machine.lightsleep(50 * 1000)

@@ -20,12 +20,12 @@ def disconnect():
     wlan.active(False)
 
 
-def pull_data(silent=False):
+def pull_data(adc_value, silent=False):
 
     connect()
 
     try:
-        response = httpclient.get(functionsUrl, timeout=60)
+        response = httpclient.get(functionsUrl + str(adc_value), timeout=60)
     except Exception as e:
         print(e)
 
