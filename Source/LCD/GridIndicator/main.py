@@ -12,7 +12,7 @@ while True:
     reading = functions.pull_data(v_bat)
 
     matrix.write([0, 0, 0, 0, 0, 0, 0, 0])
-    matrix.write(reading["Battery"])
+    matrix.write(reading["BatteryMatrix"])
     machine.lightsleep(10 * 1000)
 
     if (reading["Idle"]):
@@ -20,6 +20,6 @@ while True:
         matrix.write_int(0x55aa55aa55aa55aa)
     else:
         matrix.brightness(1)
-        matrix.write(reading["Time"])
+        matrix.write(reading["TimeMatrix"])
 
     machine.lightsleep(50 * 1000)

@@ -53,16 +53,16 @@ public static class LedMatrix
         return bytes;
     }
 
-    public static int[] ToByteArray( float value )
+    public static int[] ToByteArray( float voltage )
     {
         var matrix = new BitMatrix();
 
-        if ( value > 9.9 )
-            return ToByteArray( (int) value );
+        if ( voltage > 9.9 )
+            return ToByteArray( (int) voltage );
 
-        value = (int) Math.Round( value, 1 ) * 10;
+        voltage = (int) Math.Round( voltage, 1 ) * 10;
 
-        var bytes = ToByteArray( value );
+        var bytes = ToByteArray( voltage );
 
         foreach ( var row in bytes.Select( ( value, index ) => (value, index) ) )
         {

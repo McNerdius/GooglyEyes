@@ -33,7 +33,13 @@ public static class Functions
             };
 
             var reading = JsonSerializer.Deserialize<Reading>( await httpRequest.ReadAsStringAsync() );
+
+            var time = TimeZoneInfo.ConvertTimeFromUtc( DateTime.UtcNow, TimeZoneInfo.CreateCustomTimeZone( "MST", TimeSpan.FromHours( -6 ), "MST", "MST" ) );
+            reading.Time = time;
+
             readings = readings.Take( 100 ).Prepend( reading );
+
+            log.LogInformation( time.ToString(), null );
 
             await JsonSerializer.SerializeAsync( blobOutput, readings, new JsonSerializerOptions { WriteIndented = true } );
 
@@ -68,7 +74,7 @@ public static class Functions
 
                 log.LogInformation( time.ToString(), null );
 
-                reading.Time = LedMatrix.ToByteArray( time ).Reverse().ToArray();
+                reading.TimeMatrix = LedMatrix.ToByteArray( time ).Reverse().ToArray();
 
                 // Raw ADC value to 2-digit 8x8 representation
                 // A0 is fed battery level split with a 350k/100k voltage divider for a max of 0.93 volts
@@ -77,7 +83,7 @@ public static class Functions
                 // 0.93 * 1023 = 951 theoretically == 100% / 4.2v
                 // volts = adc / 951 * 4.2
                 var volts = adcValue / 951f * 4.2f;
-                reading.Battery = LedMatrix.ToByteArray( volts ).Reverse().ToArray();
+                reading.BatteryMatrix = LedMatrix.ToByteArray( volts ).Reverse().ToArray();
 
                 return new ContentResult
                 {
