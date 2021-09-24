@@ -31,18 +31,21 @@ Using `Excubo.Blazor.Canvas` to start.  Initially i'd hoped this would be a good
 <details>
     <summary>LCD googlies for 3D printer</summary>
 
-This is the "real" project.  Coupling either a [D1 Mini](https://www.wemos.cc/en/latest/d1/d1_mini.html) or [S2 Mini](https://www.wemos.cc/en/latest/s2/s2_mini.html) with a [2.4" LCD](https://www.wemos.cc/en/latest/d1_mini_shield/tft_2_4.html) and an accelerometer to feed x-axis movement data to the software googlies.  
+This is the "real" project.  Coupling an [S2 Mini](https://www.wemos.cc/en/latest/s2/s2_mini.html) with a [2.4" LCD](https://www.wemos.cc/en/latest/d1_mini_shield/tft_2_4.html) and an accelerometer to feed x-axis movement data to the software googlies.  It'll be my first project to use CircuitPython.  (I've been enjoying the D1 Mini/MicroPython combo but as the D1 Mini is an ESP8266 there is no CircuitPython support.)
 
-And since it's keeping an eye on movement, it'll know when the print is done and do IoT things to let me know.  (Not an Octoprint user yet, maybe when i get a 2nd printer. :) 
-    
-Initial version will be done in MicroPython - hopefully performance is OK.  If not, Arduino it is.  (D1/S2 Minis can run either!)
 
 Ponderings:
-* the LCD is touch-capable.  "follow my finger" needs to happen.
-* the accelerometer has "double tap" recognition, this will be used to enter "watch my print" mode, doing IoT things after the printer is deemed idle.
-* toss in a Si7021 temp/humidity sensor i have laying around if board space allows
-* will tap into the printer's 24-volt [interface plate](https://www.fargo3dprinting.com/products/interface-plate-keypin-wanhao-duplicator-i3-plusmaker-select-plus/) thingy for power.
+* The LCD is touch-capable.  "Follow my finger" needs to happen.  That may be tricky/hacky as CircuitPython has no interrupt support.
+* The accelerometer has "double tap" recognition, this will be used to enter "watch my print" mode, doing IoT things after the printer is deemed idle.
+* Will tap into the printer's 24-volt [interface plate](https://www.fargo3dprinting.com/products/interface-plate-keypin-wanhao-duplicator-i3-plusmaker-select-plus/) thingy for power.
 * ...
+  
+And since it's keeping an eye (hah!) on movement, it'll know when the print is done and do IoT things to let me know.  (Yes... i am aware octoprint is a thing.)  This is done on a D1 Mini and an 8*8 LED matrix - acting as a tiny clock until it gets `Idle=true` from the GooglyScreen, at which point it will switch to a bright indicating pattern.
+
+
+
+
+
 </details>
 
 ---
